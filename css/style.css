@@ -1,0 +1,47 @@
+body {
+    background-color: aqua;
+}
+table {
+    background-color: grey;
+    width: 50%;
+    height: 75%;
+    margin: 0%;
+    border: 1px solid;
+}
+
+.resultCalculation{
+    background-color: white;
+    margin: 0px;
+    border: 0px;
+}
+
+.operation {
+    height: 2em;
+}
+
+.result {
+    height: 4em;
+    /* font-size: 3em; */
+    padding: 0px;
+}
+
+table tr td button{
+    border: 1px solid;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, "Kalnia Glaze", serif;
+    /* margin: 100px; */
+    width: 5em;
+    height: 5em;
+    border-radius: 25%;
+    /* font-size: 75%; */
+    display: block;
+    /* display: grid; */
+
+    
+    /* font-size: 20px; */
+}
+
+table tr {
+    /* display: grid;
+    gap: 0px; */
+    gap: 0px;
+}

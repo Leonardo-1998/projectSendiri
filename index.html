@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&display=swap" rel="stylesheet">
+    <!-- Kalnia Glaze -->
+</head>
+
+<body>
+    <table>
+        <tr class="resultCalculation operation">
+            <td colspan="4"></td>
+        </tr>
+        <tr class="resultCalculation result">
+            <th colspan="4" style="text-align: right;">0</th>
+        </tr>
+
+        <tr>
+            <td><button id="percentage" onclick="operator('percentage')">%</button></td>
+            <td><button id="CE" onclick="deleteAll()">CE</button></td>
+            <td><button id="C" onclick="deleteAll()">C</button></td>
+            <td><button id="delete" onclick="deleteOne()">←</button></td>
+        </tr>
+        <tr>
+            <td><button id="fraction" onclick="operator('fraction')"><sup>1</sup>⁄<sub>n</sub></button></td>
+            <td><button id="square" onclick="operator('square')">x<sup>2</sup></button></td>
+            <td><button id="squareroot" onclick="operator('squareroot')">√n</button></td>
+            <td><button id="divide" onclick="operator('divide')">÷</button></td>
+        </tr>
+        <tr>
+            <td><button id="seven" onclick="input('seven')">7</button></td>
+            <td><button id="eight" onclick="input('eight')">8</button></td>
+            <td><button id="nine" onclick="input('nine')">9</button></td>
+            <td><button id="times" onclick="operator('times')">X</button></td>
+        </tr>
+        <tr>
+            <td><button id="four" onclick="input('four')">4</button></td>
+            <td><button id="five" onclick="input('five')">5</button></td>
+            <td><button id="six" onclick="input('six')">6</button></td>
+            <td><button id="minus" onclick="operator('minus')">-</button></td>
+        </tr>
+        <tr>
+            <td><button id="one" onclick="input('one')">1</button></td>
+            <td><button id="two" onclick="input('two')">2</button></td>
+            <td><button id="three" onclick="input('three')">3</button></td>
+            <td><button id="plus" onclick="operator('plus')">+</button></td>
+        </tr>
+        <tr>
+            <td><button id="negative" onclick="negative()"><sup>+</sup>/<sub>-</sub></button></td>
+            <td><button id="zero" onclick="input('zero')">0</button></td>
+            <td><button id="decimal" onclick="decimal()">,</button></td>
+            <td><button id="equal" onclick="equal()">=</button></td>
+        </tr>
+    </table>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

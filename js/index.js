@@ -8,10 +8,45 @@ function input(input) {
 }
 
 function operator(operator) {
-    console.log(operator)
-    console.log(tempStr)
-    console.log(currentNumber)
-    calculation.push(Number(tempStr))
+    // console.log(operator)
+    // console.log(tempStr)
+    // console.log(currentNumber)
+    if(operator === "percentage"){
+        operator = "%"
+        // belakang
+    } else if(operator === "fraction"){
+        operator === "<sup>1</sup>⁄"
+        // depan
+    } if(operator === "square"){
+        operator = "<sup>2</sup>";
+        // belakang
+    } else if (operator === "squareroot"){
+        operator = "√"
+        // depan
+    } else if(operator === "divide"){
+        operator = "÷";
+        // belakang
+    } else if(operator === "times"){
+        operator = "X";
+        // belakang
+    } else if (operator === "minus"){
+        operator = "-"
+        // belakang
+    } else if (operator === "plus"){
+        operator = "+"
+        // belakang
+    }
+
+    if(tempStr.length !== 0){
+        calculation.push(Number(tempStr))
+        tempStr = ""
+        calculation.push(operator)
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
+    } else {
+        calculation.pop()
+        calculation.push(operator)
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
+    }
     // return press
 }
 
@@ -66,5 +101,5 @@ let tempStr = ""
 let calculation = []
 let currentNumber = 0
 
-document.getElementById("currentNumber").innerHTML = BigInt(currentNumber)
+document.getElementById("currentNumber").innerHTML = Number(currentNumber)
 document.getElementById("currentOperation").innerHTML = currentNumber

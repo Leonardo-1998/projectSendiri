@@ -3,41 +3,44 @@ function input(input) {
     // console.log(input)
     tempStr += input
     currentNumber = Number(tempStr)
-    // console.log(currentNumber)
+    console.log(currentNumber)
     document.getElementById("currentNumber").innerHTML = currentNumber
+    if (calculation.length !== 0) {
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]} `
+    }
 }
 
 function operator(operator) {
     // console.log(operator)
     // console.log(tempStr)
     // console.log(currentNumber)
-    if(operator === "percentage"){
+    if (operator === "percentage") {
         operator = "%"
         // belakang
-    } else if(operator === "fraction"){
+    } else if (operator === "fraction") {
         operator === "<sup>1</sup>⁄"
         // depan
-    } if(operator === "square"){
+    } if (operator === "square") {
         operator = "<sup>2</sup>";
         // belakang
-    } else if (operator === "squareroot"){
+    } else if (operator === "squareroot") {
         operator = "√"
         // depan
-    } else if(operator === "divide"){
+    } else if (operator === "divide") {
         operator = "÷";
         // belakang
-    } else if(operator === "times"){
+    } else if (operator === "times") {
         operator = "X";
         // belakang
-    } else if (operator === "minus"){
+    } else if (operator === "minus") {
         operator = "-"
         // belakang
-    } else if (operator === "plus"){
+    } else if (operator === "plus") {
         operator = "+"
         // belakang
     }
 
-    if(tempStr.length !== 0){
+    if (tempStr.length !== 0) {
         calculation.push(Number(tempStr))
         tempStr = ""
         calculation.push(operator)
@@ -57,13 +60,15 @@ function deleteAll() {
 
 function negative() {
     console.log("negative")
-    if (tempStr[0] !== "-") {
+    if (tempStr === "0") {
+        tempStr = "0"
+    } else if (tempStr[0] !== "-") {
         tempStr = "-" + tempStr
         currentNumber = Number(tempStr)
         document.getElementById("currentNumber").innerHTML = currentNumber
     } else {
         tempStr = tempStr.slice(1)
-        console.log(tempStr)
+        // console.log(tempStr)
         currentNumber = Number(tempStr)
         document.getElementById("currentNumber").innerHTML = currentNumber
     }
@@ -74,7 +79,7 @@ function deleteOne() {
     // console.log("deleteOne")
     tempStr = tempStr.slice(0, tempStr.length - 1)
     // console.log(tempStr[tempStr.length-1])
-    if(tempStr[tempStr.length-1] === "."){
+    if (tempStr[tempStr.length - 1] === ".") {
         // console.log("a")
         tempStr = tempStr.slice(0, tempStr.length - 1)
     }
@@ -94,9 +99,35 @@ function decimal() {
 }
 
 function equal() {
-    console.log("equal")
+    if (calculation.length > 1) {
+        console.log("equal")
+        let result
+        if (tempStr.length !== 0) {
+            currentNumerical = Number(tempStr)
+        }
+        if (calculation[1] === "+") {
+            result = calculation[0] + currentNumerical;
+            tempStr = "";
+        } else if (calculation[1] === "-") {
+            result = calculation[0] - currentNumerical;
+            tempStr = "";
+        } else if (calculation[1] === "X") {
+            result = calculation[0] * currentNumerical;
+            tempStr = "";
+        } else if (calculation[1] === "÷") {
+            result = calculation[0] / currentNumerical;
+            tempStr = "";
+        }
+        document.getElementById("currentNumber").innerHTML = result
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]} ${currentNumerical} =`
+        calculation[0] = result
+    } else if (tempStr) {
+        document.getElementById("currentNumber").innerHTML = Number(tempStr)
+        document.getElementById("currentOperation").innerHTML = `${Number(tempStr)}`
+    }
 }
 
+let currentNumerical
 let tempStr = ""
 let calculation = []
 let currentNumber = 0

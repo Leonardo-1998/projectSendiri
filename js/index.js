@@ -42,7 +42,7 @@ function directOperation(operator) {
 
         let currentNumber = Number(tempStr)
         let squareroot = Math.sqrt(currentNumber)
-        console.log(squareroot)
+        // console.log(squareroot)
 
         // Menunjukan operasi
         document.getElementById("currentOperation").innerHTML = `${operator}${currentNumber} =`
@@ -115,21 +115,23 @@ function deleteAll() {
 
 function negative() {
     console.log("negative")
-    if (calculation.length > 1) {
-
-    }
-    if (tempStr === "0") {
-        tempStr = "0"
+    if (calculation.length === 1) {
+        // Mengubah hasil directOperation menjadi negatif/positif
+        tempStr = String(calculation[0])
+        tempStr = "-" + tempStr
+        calculation.pop()
+        document.getElementById("currentOperation").innerHTML = ""
+        // document.getElementById("currentOperation").innerHTML = ""
+    } else if (tempStr === "") {
+        tempStr = ""
     } else if (tempStr[0] !== "-") {
         tempStr = "-" + tempStr
-        currentNumber = Number(tempStr)
-        document.getElementById("currentNumber").innerHTML = currentNumber
     } else {
         tempStr = tempStr.slice(1)
         // console.log(tempStr)
-        currentNumber = Number(tempStr)
-        document.getElementById("currentNumber").innerHTML = currentNumber
     }
+    let currentNumber = Number(tempStr)
+    document.getElementById("currentNumber").innerHTML = currentNumber
     // return a
 }
 

@@ -3,54 +3,31 @@
 function input(input) {
     // console.log(input)
     tempStr += input
-    let currentNumber = Number(tempStr)
+    currentNumber = Number(tempStr)
     console.log(currentNumber)
     document.getElementById("currentNumber").innerHTML = currentNumber
 
+    // Jika ada Operator
     if (calculation.length === 2) {
-        // Jika ada Operator
         document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]} `
-        // Menunjukan angka sebelum dan operation yang sekarang
     } else if (calculation.length === 1) {
-        document.getElementById("currentOperation").innerHTML = ``
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]}`
     }
 }
 
 function directOperation(operator) {
-    if(!tempStr){
-        // Jika tempStr kosong setelah result
-        tempStr = String(calculation[0])
-    }
     if (operator === "square") {
         operator = "<sup>2</sup>";
         // belakang
-
-        let currentNumber = Number(tempStr)
-        let square2 = currentNumber * currentNumber
+        let square2 = Number(tempStr) * Number(tempStr)
         console.log(square2)
-
-        // Menunjukan operasi
-        document.getElementById("currentOperation").innerHTML = `${currentNumber}${operator} =`
-
-        // Menunjukan hasil
+        document.getElementById("currentOperation").innerHTML = `${Number(tempStr)}${operator} =`
         document.getElementById("currentNumber").innerHTML = `${square2}`
         calculation[0] = square2
         tempStr = ""
     } else if (operator === "squareroot") {
         operator = "√"
         // depan
-
-        let currentNumber = Number(tempStr)
-        let squareroot = Math.sqrt(currentNumber)
-        console.log(squareroot)
-
-        // Menunjukan operasi
-        document.getElementById("currentOperation").innerHTML = `${operator}${currentNumber} =`
-
-        // Menunjukan hasil
-        document.getElementById("currentNumber").innerHTML = `${squareroot}`
-        calculation[0] = squareroot
-        tempStr = ""
     }
 }
 
@@ -58,8 +35,6 @@ function operator(operator) {
     console.log(operator)
     // console.log(tempStr)
     // console.log(currentNumber)
-
-    // Jenis Operasi
     if (operator === "percentage") {
         operator = "%"
         // belakang
@@ -80,19 +55,13 @@ function operator(operator) {
         // belakang
     }
 
-    if (calculation[1] !== undefined) {
-        // Mengecek apakah ada operasi sebelumnya
-        calculation.pop()
-        calculation.push(operator)
-        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
-    } else if (calculation[0] !== undefined) {
-        // Mengecek apakah ada angka sebelum operasi
-        calculation.push(operator)
-        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
-    } else if (tempStr.length !== 0) {
-        // Mengecek apakah belum ada angka
+    if (tempStr.length !== 0) {
         calculation.push(Number(tempStr))
         tempStr = ""
+        calculation.push(operator)
+        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
+    } else if (calculation[1] !== undefined) {
+        calculation.pop()
         calculation.push(operator)
         document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]}`
     }
@@ -198,11 +167,12 @@ function equal() {
 
 let result
 let currentNumerical
-let tempStr = "" // Yang ditampilkan utama
-let calculation = [] // Menyimpan data operasi di atas
+let tempStr = ""
+let calculation = []
+let currentNumber = 0
 
 // Display Utama
-document.getElementById("currentNumber").innerHTML = 0
+document.getElementById("currentNumber").innerHTML = Number(currentNumber)
 
 // Display Operation
-document.getElementById("currentOperation").innerHTML = 0
+document.getElementById("currentOperation").innerHTML = currentNumber

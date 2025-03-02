@@ -17,7 +17,7 @@ function input(input) {
 }
 
 function directOperation(operator) {
-    if(!tempStr){
+    if (!tempStr) {
         // Jika tempStr kosong setelah result
         tempStr = String(calculation[0])
     }
@@ -104,7 +104,7 @@ function deleteAll() {
     // return clear
 
     // reset semua
-    result
+    result = 0
     currentNumerical
     tempStr = ""
     calculation = []
@@ -146,7 +146,10 @@ function deleteOne() {
     // }
     tempStr = tempStr.slice(0, tempStr.length - 1)
     // console.log(tempStr[tempStr.length-1])
-    if (tempStr[tempStr.length - 1] === ".") {
+    if (
+        tempStr[tempStr.length - 1] === "." ||
+        tempStr[tempStr.length - 1] === "-"
+     ) {
         // console.log("a")
         tempStr = tempStr.slice(0, tempStr.length - 1)
     }
@@ -169,33 +172,37 @@ function decimal() {
 // Masih perlu dibetulkan
 //         V
 function equal() {
-    if (calculation.length > 1) {
-        console.log("equal")
-        let result
-        if (tempStr.length !== 0) {
-            currentNumerical = Number(tempStr)
-        }
-        if (calculation[1] === "+") {
-            result = calculation[0] + currentNumerical;
-            tempStr = "";
-        } else if (calculation[1] === "-") {
-            result = calculation[0] - currentNumerical;
-            tempStr = "";
-        } else if (calculation[1] === "X") {
-            result = calculation[0] * currentNumerical;
-            tempStr = "";
-        } else if (calculation[1] === "÷") {
-            result = calculation[0] / currentNumerical;
-            tempStr = "";
-        }
-        document.getElementById("currentNumber").innerHTML = result
-        document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]} ${currentNumerical} =`
-        calculation[0] = result
-    } else if (tempStr) {
-        document.getElementById("currentNumber").innerHTML = Number(tempStr)
-        document.getElementById("currentOperation").innerHTML = `${Number(tempStr)} =`
+    if (!tempStr) {
         tempStr = ""
-    }
+        console.log("a")
+    } else
+        if (calculation.length > 1) {
+            console.log("equal")
+            if (tempStr.length !== 0) {
+                currentNumerical = Number(tempStr)
+            }
+            if (calculation[1] === "+") {
+                result = calculation[0] + currentNumerical;
+                tempStr = "";
+            } else if (calculation[1] === "-") {
+                result = calculation[0] - currentNumerical;
+                tempStr = "";
+            } else if (calculation[1] === "X") {
+                result = calculation[0] * currentNumerical;
+                tempStr = "";
+            } else if (calculation[1] === "÷") {
+                result = calculation[0] / currentNumerical;
+                tempStr = "";
+            }
+            document.getElementById("currentNumber").innerHTML = result
+            document.getElementById("currentOperation").innerHTML = `${calculation[0]} ${calculation[1]} ${currentNumerical} =`
+            calculation[0] = result
+        } else if (tempStr) {
+            calculation[0] = Number(tempStr);
+            document.getElementById("currentNumber").innerHTML = Number(tempStr)
+            document.getElementById("currentOperation").innerHTML = `${Number(tempStr)} =`
+            tempStr = ""
+        }
 }
 
 let result

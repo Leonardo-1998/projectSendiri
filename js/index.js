@@ -1,5 +1,4 @@
 // menerima input angka lalu menunjukannya
-// Masih harus dibetulkan
 function input(input) {
     // console.log(input)
     tempStr += input
@@ -99,6 +98,28 @@ function operator(operator) {
     // return press
 }
 
+function fraction(){
+    console.log("fraction")
+    let currentNumber
+    let fraction 
+    // console.log(tempStr,calculation[0])
+    if(!tempStr){
+        console.log("none")
+    } 
+    if(tempStr){
+        console.log(2)
+        currentNumber = Number(tempStr)
+        fraction = 1/currentNumber
+    } else if(calculation[0] !== undefined){
+        console.log(1)
+        fraction = 1/calculation[0]
+        tempStr = String(fraction)
+    }
+
+    document.getElementById("currentNumber").innerHTML = `${fraction}`
+    tempStr = String(fraction)
+}
+
 function deleteAll() {
     console.log("deleteAll")
     // return clear
@@ -135,7 +156,6 @@ function negative() {
     // return a
 }
 
-// INI MASIH HARUS DI BETULKAN
 function deleteOne() {
     // console.log("deleteOne")
     if (calculation[1] === undefined) {
@@ -168,9 +188,6 @@ function decimal() {
     // document.getElementById("currentNumber").innerHTML = currentNumber
 }
 
-
-// Masih perlu dibetulkan
-//         V
 function equal() {
     if (!tempStr) {
         tempStr = ""

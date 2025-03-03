@@ -50,6 +50,15 @@ function directOperation(operator) {
         document.getElementById("currentNumber").innerHTML = `${squareroot}`
         calculation[0] = squareroot
         tempStr = ""
+    } else if (operator === "percentage"){
+        if(calculation.length === 0){
+            tempStr = String(Number(tempStr)/100) 
+        } else  
+        if(calculation.length === 2){
+            let persen = calculation[0] * Number(tempStr) / 100
+            tempStr = String(persen)
+        }
+        equal()
     }
 }
 
@@ -59,13 +68,7 @@ function operator(operator) {
     // console.log(currentNumber)
 
     // Jenis Operasi
-    if (operator === "percentage") {
-        operator = "%"
-        // belakang
-    } else if (operator === "fraction") {
-        operator === "<sup>1</sup>⁄"
-        // depan
-    } else if (operator === "divide") {
+    if (operator === "divide") {
         operator = "÷";
         // belakang
     } else if (operator === "times") {
